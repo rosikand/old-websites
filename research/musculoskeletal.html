@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Rohan Sikand | Research</title>
+        <meta name="description" content="Miscellaneous page of Rohan Sikand, a student at Stanford University studying Computer Science and concentrating in Artificial Intelligence.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <link rel="icon" type="image/png" href="../images/evergreen.png">
+        <link rel="stylesheet" href="../styles/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,900|Source+Sans+Pro:300i,400,700&display=swap" rel="stylesheet">
+        <style>
+            .img-poster {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 85%;
+            }
+            .abstract-text {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 90%;
+                text-align: center;
+                font-size: 15px;
+            }
+            #pdf_viewer {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+                height: 35rem;
+                border: 1rem solid rgba(0, 0, 0, 0.1);
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="container">
+            <h1 class="global-title">Rohan Sikand <img src="../images/evergreen.png" alt="Point Theme 🎯" class="header-img"></h1>
+            
+            <nav style="font-weight: bold; margin-left: auto; margin-right: auto;">
+                <ul>
+                    
+                    <li>
+                        <a href="../index.html">
+                            Home
+                        </a>
+                    </li>
+        
+                    <li>
+                        <a href="../research.html">
+                            Research
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="../projects.html">    
+                            Projects
+                        </a>
+                    </li>
+
+                    
+
+                    <li>
+                        <a href="../writing.html">    
+                            Writing
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="../cv.html">    
+                            CV
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="../subpages.html">    
+                            Subpages
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://rosikand.github.io/blog/">    
+                            Blog
+                        </a>
+                    </li>
+                </ul>
+                <br>
+                <hr style="opacity: 0.3;">
+
+            </nav>      
+
+           
+
+            <!-- Content -->
+            <h3 style="text-align: center;">Convolutional Neural Networks for Universal Computer-Aided Detection of Musculoskeletal Abnormalities
+            </h3>
+
+
+            <hr style="opacity: 0.2; width:90%; margin: auto;"> 
+            <br>
+
+            <!-- Poster -->
+            <img src="../images/musculoskeletal_diagram.png" class="img-poster"/>
+
+            <!-- Abstract -->
+            <br>
+            <h4 style="text-align:center;"">Abstract</h4>
+            <p class="abstract-text">
+                With over 2.6 billion musculoskeletal related injuries occurring each
+        year, the need for trained doctors is extensive–especially in rural
+        areas where doctors aren’t always available. This experiment aims to
+        test the ability of machine learning algorithms, specifically
+        convolutional neural networks, to accurately detect abnormalities in
+        musculoskeletal radiographs. The Stanford MURA dataset, consisting of
+        14,863 musculoskeletal radiographs, was used as input data. This
+        experiment aims not only to evaluate the use of machine learning to
+        detect abormalities, but also to decipher which CNN architectures
+        perform well for this task. Specifically, four different CNN
+        architectures were tested: VGG-16, VGG-19, ResNet, and Xception.
+        Predictions were made on a test set for each model on new radiographs.
+        To show the results and to best compare the architectures, training and
+        validation accuracy, training and validation loss, and a confusion
+        matrix are shown for each architecture. From each confusion matrix,
+        several metrics were calculated including sensitivity, specitivity,
+        precision, classification accuracy, F-score, and Matthews correlation
+        coefficient (MCC). The results are statistically significant and show
+        that CNNs are applicable for detecting abnormalities in musculoskeletal
+        radiographs.
+              </p>
+
+
+            <!-- Paper (JS PDF Viewer) -->
+            <br>
+            <h4 style="text-align:center;"">Paper</h4>
+            <br>
+            <div id="pdf_viewer">
+            <script src="../js/pdfobject.js"></script>
+            <script>
+                PDFObject.embed("../files/musculoskeletal_paper.pdf", "#pdf_viewer");
+            </script>
+            </div>
+            
+            
+
+
+        </div>
+    
+</body></html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Rohan Sikand | Research</title>
+        <meta name="description" content="Miscellaneous page of Rohan Sikand, a student at Stanford University studying Computer Science and concentrating in Artificial Intelligence.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <link rel="icon" type="image/png" href="../images/evergreen.png">
+        <link rel="stylesheet" href="../styles/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,900|Source+Sans+Pro:300i,400,700&display=swap" rel="stylesheet">
+        <style>
+            .img-poster {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 70%;
+            }
+            .abstract-text {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 90%;
+                text-align: center;
+                font-size: 15px;
+            }
+            #pdf_viewer {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+                height: 35rem;
+                border: 1rem solid rgba(0, 0, 0, 0.1);
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="container">
+            <h1 class="global-title">Rohan Sikand <img src="../images/evergreen.png" alt="Point Theme 🎯" class="header-img"></h1>
+            
+            <nav style="font-weight: bold; margin-left: auto; margin-right: auto;">
+                <ul>
+                    
+                    <li>
+                        <a href="../index.html">
+                            Home
+                        </a>
+                    </li>
+        
+                    <li>
+                        <a href="../research.html">
+                            Research
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="../projects.html">    
+                            Projects
+                        </a>
+                    </li>
+
+                    
+
+                    <li>
+                        <a href="../writing.html">    
+                            Writing
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="../cv.html">    
+                            CV
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="../subpages.html">    
+                            Subpages
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://rosikand.github.io/blog/">    
+                            Blog
+                        </a>
+                    </li>
+                </ul>
+                <br>
+                <hr style="opacity: 0.3;">
+
+            </nav>      
+
+           
+
+            <!-- Content -->
+            <h3 style="text-align: center;">Using Multispectral Remote Sensing Image Data and Neural Networks to Automatically Predict Optically Active Parameters for Inland Water Quality Analysis</h3>
+
+
+            <!-- <br> -->
+            <hr style="opacity: 0.2; width:90%; margin: auto;"> 
+            <br>
+
+            <!-- Poster -->
+            <h4  style="text-align:center;"><a href="../images/wqp_poster.png" target="blank">Poster</a></h4>
+            <br>
+            <img src="../images/wqp_poster.png" class="img-poster"/>
+
+            <!-- Abstract -->
+            <br>
+            <h4 style="text-align:center;"">Abstract</h4>
+            <p class="abstract-text">
+                Inland water systems are essential to our environment because they are
+                vital ecosystems that are biodiverse. However scientists have found that
+                monitoring inland water quality through <em>in situ</em> testing can be
+                costly, time consuming and spatially limited. In this paper, I present
+                in detail, a machine learning algorithm that takes in multispectral
+                remote sensing data from the AquaSat data set as input to predict
+                optically active water quality parameters as desired output. Several
+                data preprocessing steps were performed. A neural network model
+                consisting of five layers was implemented taking in the preprocessed
+                multispectral data as input. Several water quality parameters that were
+                deemed optically active based on their spectral signatures were
+                predicted as the output of the neural network model. The parameters are
+                Chlorophyll-A, Dissolved Organic Carbon, Total Inorganic Sediment, and
+                Total Suspended Sediment. Multiple metrics were used to calculate the
+                models performance for each parameter predicted including mean absolute
+                error, mean square error, and root mean squared error. The results
+                proved to be statistically significant–especially for Chlorophyll-A, and
+                Total Inorganic Sediment. However, several steps can be taken to improve
+                the performance of the model introduced in this experiment such as
+                utilizing more or introducing other machine learning algorithms.
+                Monitoring water quality is indeed compulsory to determine trends in the
+                fluctuation of aquatic environments and how their nutrient and pollutant
+                contents are affected by surrounding human activity. With the
+                advancements in technology, remote inland water quality assessment and
+                conservation strategies will be available at a fraction of the cost of
+                their parallel <em>in situ</em> evaluation. This will lead to effective
+                remote sensing capabilities in vast inland aquatic systems, especially
+                in communities with limited resources. My experiment shows that the use
+                of machine learning is applicable to predict water quality parameters
+                using remote sensing data without the need for <em>in situ</em> testing.
+              </p>
+
+
+            <!-- Paper (JS PDF Viewer) -->
+            <br>
+            <h4 style="text-align:center;"">Paper</h4>
+            <br>
+            <div id="pdf_viewer">
+            <script src="../js/pdfobject.js"></script>
+            <script>
+                PDFObject.embed("../files/water-paper.pdf", "#pdf_viewer");
+            </script>
+            </div>
+            
+            
+
+
+        </div>
+    
+</body></html>

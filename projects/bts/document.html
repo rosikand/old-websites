@@ -1,0 +1,628 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>  </title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="f72b8103-76e0-434d-9c89-1a0a9da12977" class="page serif"><header><h1 class="page-title">  </h1><table class="properties"><tbody></tbody></table></header><div class="page-body"><figure id="42fab4f0-fd60-422c-a607-8e0b7b9d4395" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-12-18_at_9.46.58_PM.png"><img style="width:672px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-12-18_at_9.46.58_PM.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5d5e5629-6576-45bd-87d7-a33ff43dbc8c"><div style="font-size:1.5em"><span class="icon">📌</span></div><div style="width:100%">This project was an extension from my third assignment for my <em>CS 106A: Programming Methodology</em> class.  </div></figure><p id="8a305555-16dc-436f-8d98-666410ebe184" class=""><strong>By:</strong> <strong>Rohan Sikand </strong></p><p id="22828bc2-2984-4a24-9487-b3429c153c0c" class=""><strong>Date: </strong>10/2020 </p><ul id="f575379c-2f5b-4b83-9536-d3e50b848196" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid"><strong>Table of Contents </strong></span></summary><nav id="099344e9-6141-4c90-a761-0816d4ed6f1b" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1483474b-d157-48a0-bfad-6c907b128590">Introduction </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4bdbe29c-cf19-44cd-a5cc-5c837b2e38b8">Methodology </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7f08fe72-7f4c-4571-834f-0a2913ed67f4">Goal </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#30e06b53-3e56-4911-935b-f11b1c44894a">Potential solution: white screening </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c37cb4b4-ea42-490b-81ca-47281288d02e">Finding extrema points of the tumor </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4918ef8c-51dc-48b8-bd74-fce8e219b240">Recoloring </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e378ffca-ee5c-4371-b8f2-ea902d3c7d55">Running the code </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#37b6a2ec-aba7-4288-b82d-6c47d5d61285">Conclusion </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1ec9504b-f646-4d4c-a32f-09c99b2985f0">Limitations </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9c20b6cf-01fe-4960-b792-185a73404111">Other solutions attempted </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4a48d93b-46be-41e1-ac1d-4f4960370eed">Sources  </a></div></nav></details></li></ul><hr id="980b1d4d-0ec5-4d1b-9fcf-27b082bc7171"/><h2 id="1483474b-d157-48a0-bfad-6c907b128590" class="">Introduction </h2><p id="df8dd144-60ed-4d35-abdf-b7394b78c5ba" class="">This program is largely motivated by my interest in applying computer science techniques to medically-related problems. A pitfall of these machine learning algorithms is that they need massive amounts of data to function properly. However, it is often hard to obtain enough data for medically-related problems. Common tasks in applying machine learning to medically-related problems include classification (e.g. cancer or not cancer), regression (e.g. probability of contracting a disease), and segmentation (e.g. separating a tumor from the background). In this project, I propose an alternative method to segment brain tumors in magnetic resonance imaging (MRI) scans using traditional programming techniques that does not require any data, unlike machine learning algorithms. </p><h2 id="4bdbe29c-cf19-44cd-a5cc-5c837b2e38b8" class="">Methodology </h2><h3 id="7f08fe72-7f4c-4571-834f-0a2913ed67f4" class="">Goal </h3><p id="6407a7ac-4c63-49f1-a055-863b0da5ffdb" class="">Before describing a solution to the problem, let&#x27;s view what exactly we are trying to accomplish. </p><p id="bf1b7b56-0a12-4d25-b3c6-770e488def2b" class="">As input, the algorithm will read in an unmarked brain MRI. From here, the algorithm will segment the tumor by highlighting it in solid red. Here is a before and after picture: </p><div id="a26ea677-ed5a-40b8-b19f-af966ab6d90a" class="column-list"><div id="34522fe5-d93b-4975-8d8b-8731f540403c" style="width:50%" class="column"><figure id="29d590a1-1624-4e91-8d1f-b25b85809ef5" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/160.jpg"><img style="width:192px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/160.jpg"/></a><figcaption>An brain MRI scan is inputted into the algorithm. </figcaption></figure></div><div id="9e4a2673-18a7-4583-a6a9-f0d57a3232a4" style="width:50%" class="column"><figure id="90842df1-1965-4972-948f-edca2d175130" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/djkef.jpg"><img style="width:192px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/djkef.jpg"/></a><figcaption>The output shows an image displaying the segmented tumor. Also, the approximate tumor size in pixels will display on the console. </figcaption></figure></div></div><p id="c7b2c8da-19ee-42dd-af47-8804b86435ca" class="">In addition to segmenting the tumor, the approximate tumor dimensions (height and width) will be displayed on the console. </p><h3 id="30e06b53-3e56-4911-935b-f11b1c44894a" class="">Potential solution: white screening </h3><p id="c4b85c2d-0178-4eae-9549-9b3d3961e7e3" class="">For certain images, applying the concept of red screening, like in <code>forestfires.py</code>, may work. In brain MRIs, tumors appear white-ish—lighter than the dark grey-ish areas around the tumor. In applying the white screening technique, the goal is to find the part of the image that is sufficiently white. For this, an intensity threshold needs to be found. Something to note: for gray in images, the red, blue, and green values are all the same (no color). To find the intensity thresholds for each respective brain MRI image, I used <a href="https://www.ginifab.com/feeds/pms/pms_color_in_image.php">this</a> website which allowed me to hover over parts of the image and find the respective RGB values. In the above example, the intensity threshold is set to 160. Once an intensity threshold is set, the same methodology that is used in <code>forestfires.py</code> is applied—except the sufficiently white pixel needs to be greater than the intensity threshold instead of the sufficiently red pixels. When the code is the run here is the before and after picture of the sample brain MRI scan from above: </p><div id="c7244218-6b13-40dc-b2e9-5edc90125fd0" class="column-list"><div id="8964874b-f4d1-4520-97ba-ab490278c393" style="width:50%" class="column"><figure id="54552231-c943-409a-b7e4-44e11f339a64" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/33r.png"><img style="width:180px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/33r.png"/></a><figcaption>Before </figcaption></figure></div><div id="45f3f658-0802-4095-9331-dbe2299dec4c" style="width:50%" class="column"><figure id="57dffdae-fc3d-4499-be01-69c88142a2c4" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-10-16_at_12.06.04_AM.png"><img style="width:192px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-10-16_at_12.06.04_AM.png"/></a><figcaption>After</figcaption></figure></div></div><p id="18d3f1dc-8cfd-424d-9fdf-2cde65917335" class="">The algorithm works fairly well for this task, making the tumor appear visually red. However, there remains one problem: some other parts of the scan, outside of the tumor, meet the sufficiently white requirement. Unfortunately, the RGB values of that part of the scan are similar to that of the tumor. So we must come up with a different method. </p><h3 id="c37cb4b4-ea42-490b-81ca-47281288d02e" class="">Finding extrema points of the tumor </h3><p id="5404e3fa-35f6-40b0-9f1e-0971322e21d3" class="">A potential solution to remove the extraneous red highlights that are not part of the tumor, is to traverse a cropped &quot;window&quot; that only covers the area that the tumor is contained in. To do this, we can find the maximum length and maximum width (extrema) of consecutive sufficiently white pixels using the algorithmic steps described below. The greatest maximums will, in almost all cases, be at the location of the tumor since the tumor is usually much bigger than the scattered extraneous consecutive sufficiently white pixels throughout the rest of the image. The annotated images below show a visual explanation of this. </p><div id="63b3cbd4-64e6-4d2b-888c-eddc8ff90ca7" class="column-list"><div id="bf3f4cde-0581-4480-a846-5465df970ce2" style="width:50%" class="column"><figure id="7890575f-67cf-4eac-909e-55ec009d4384" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-10-16_at_12.12.11_AM.png"><img style="width:192px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-10-16_at_12.12.11_AM.png"/></a><figcaption>The goal is to find the extrema points of the tumor, approximately drawn in this image. </figcaption></figure></div><div id="97a9ee3b-d724-4e7d-afa2-3ef588c0ae3f" style="width:50%" class="column"><figure id="10b9e738-2171-43da-bfc1-c3a642bfd88d" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-10-16_at_12.13.28_AM.png"><img style="width:192px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-10-16_at_12.13.28_AM.png"/></a><figcaption>Using the extrema points as dimensions, we can then create a &quot;tumor&quot; window as shown here. We then need to traverse only this window and highlight any sufficiently white pixels. </figcaption></figure></div></div><p id="1e6c4823-0d15-44c7-9dc2-1827b539d685" class="">To find the maximum of consecutive sufficiently white pixels, the following <strong>algorithmic steps</strong> are implemented. The idea is to find the maximum of the consecutive sufficiently white pixels (see annotated images below). </p><ol id="d670e8ba-f6fc-4f3b-b896-1a4e6a547547" class="numbered-list" start="1"><li>Traverse the entire image pixel by pixel using a nested double for loop such so that the <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x, y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> coordinates of each pixel are accessible. Inside the double for loop, create a pixel variable at the current <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x, y) </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> location. </li></ol><ol id="b4fddc86-73de-425b-b555-435890c203d3" class="numbered-list" start="2"><li>We need to calculate two extrema: height and width. Start by creating a counter value which will be used in step 3. For calculating the height, in the double for loop traversal, create another pixel variable in which the x-value is the same, but the y-value Is one below. For the width, in the double for loop traversal, create a pixel variable in which the y-value is the same, but the x-value is one to the right.  </li></ol><ol id="41215463-18a5-4d56-853d-ff778841c68e" class="numbered-list" start="3"><li> Still inside the double for loop traversal, implement a while loop that will continue to run until the pixel below (for height) or right (for width) of the current pixel is not sufficiently white. As soon as the while loops fails, add the counter value to a list, and the position information of that pixel (for height, the <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span></span><span>﻿</span></span> value is added and for width, the <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span></span><span>﻿</span></span> value is added) to separate lists respectively. Furthermore the original pixel&#x27;s, created in step 1 will also be added to separate lists. At the end of the complete traversal, there will be six different lists: <ul id="9005203b-73bb-46c0-a159-ca990cb12981" class="bulleted-list"><li>Counter values for the height </li></ul><ul id="8dd1c969-d568-4c3a-9437-36eb853dd9b6" class="bulleted-list"><li>Counter values for the width </li></ul><ul id="6713cc23-8a29-449d-ace9-0ad1b44bbe48" class="bulleted-list"><li>The <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span></span><span>﻿</span></span> coordinate at the top of the consecutive sufficiently white pixel streaks (for height) </li></ul><ul id="1a01fec6-7454-4687-b8ba-3fc81a21c146" class="bulleted-list"><li>The <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span></span><span>﻿</span></span> coordinate at the bottom of the consecutive sufficiently white pixel streaks (for height)</li></ul><ul id="68642a5f-a56b-4f3c-a26a-ea0505353b92" class="bulleted-list"><li>The <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span></span><span>﻿</span></span> coordinate at the left of the consecutive sufficiently white pixel streaks (for width)</li></ul><ul id="ec873855-cb76-4657-9569-6b92b91a621b" class="bulleted-list"><li>The <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span></span><span>﻿</span></span> coordinate at the right of the consecutive sufficiently white pixel streaks (for width)</li></ul><p id="7e65050c-935d-43bc-b3ee-7899e4d03eff" class="">What is important is that the index of each element in each list matches that of the other indexes in the other lists. For example, for a specific consecutive sufficiently white pixel streak, the counter value index, for both the width and the height, will match that of the coordinate indexes respectively. </p></li></ol><ol id="f61a936e-126a-4337-a11d-01199a3fee67" class="numbered-list" start="4"><li>Now we need to find the maximum of the consecutive sufficiently white pixel streaks. To do this, since each index in each list correspond with the rest of the lists, take the maximum of the counter values list (for height and width separately) and retrieve the index as well. The index of the maximum counter value will be the same as the indexes in the coordinate lists for the respective pixel. Thus, the locations of the extrema of the tumor, as well as the height and the width of the tumor, can be retrieved. Print the height and width values to the console. </li></ol><p id="5635ae08-381a-4914-b914-b77acdf9b517" class="">The following <strong>annotated images</strong> help visually explain this: </p><div id="e886ed1e-c69d-437c-aec2-713a6d8e2d83" class="column-list"><div id="4d58c90c-f19e-41a8-9355-21638aa30ce8" style="width:43.75%" class="column"><figure id="2e26472c-f893-4df3-b8eb-6022615d9097" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-10-16_at_12.19.20_AM.png"><img style="width:288px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-10-16_at_12.19.20_AM.png"/></a><figcaption>Here, each white line, shows where there are consecutive red pixels (which are the sufficiently white pixels in the original image) in the y-direction. The longest white line will be the height of the tumor window. The top of this line will be the top of the tumor window and the bottom of this line will be the bottom of the tumor window. Furthermore, the longest white line will be the approximate height of the actual tumor and is printed out to the console. </figcaption></figure></div><div id="07243ce3-1252-4882-a254-038fa212c8df" style="width:56.25%" class="column"><figure id="8182ad53-55e0-4354-bb81-44b011ded970" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-10-16_at_12.30.38_AM.png"><img style="width:288px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-10-16_at_12.30.38_AM.png"/></a><figcaption>The same methodology can be applied for finding the width as well, as shown above. The longest white line will be the width of the tumor window. The furtherest left point of this line will be the left side of the tumor window and the furthest right point of this line will be the right side of the tumor window. Furthermore, the longest white line will be the approximate width of the actual tumor and is printed out to the console.  </figcaption></figure><p id="da3822ec-3229-4ec0-a742-06611685ede5" class="">
+</p></div></div><h3 id="4918ef8c-51dc-48b8-bd74-fce8e219b240" class="">Recoloring </h3><p id="12a44bd1-3a66-4f9d-a492-6683e9d3bb0b" class="">Now that we have retrieved the positional information that we need, we can recolor the image so that only the tumor is highlighted. To do this, traverse only the &quot;tumor window&quot; in which the dimensions were found in finding the extrema of the tumor as described in the previous section. Now, highlight any sufficiently white pixels in a different color than red (I chose blue in my program). Next, an additional traversal of the entire image is done to replace the extraneous red highlights with the original image color at that pixel. Lastly, another traversal of the entire image is done to recolor all the pixels highlighted in the traversal of the tumor window, to red. After this step, only the tumor will be highlighted in red. </p><h3 id="e378ffca-ee5c-4371-b8f2-ea902d3c7d55" class="">Running the code </h3><p id="d3f7b5e1-44fc-444f-a82d-7236006a3d95" class="">Several test cases are provided and attached along with this document. The naming convention is important as each file name represents the correct intensity threshold value for that image. For example, the file <code>160.jpg</code> should have the intensity threshold set to <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>160</mn></mrow><annotation encoding="application/x-tex">160</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">0</span></span></span></span></span><span>﻿</span></span>. Here the five test images provided. </p><div id="8e5d7870-37f3-48c1-87cc-9814f301555f" class="column-list"><div id="0ba4270a-dffa-412c-8caf-47278f7c3c6d" style="width:20%" class="column"><figure id="994a38d2-e4b4-46b8-8278-9459b5abdc48" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/110.jpg"><img style="width:264px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/110.jpg"/></a><figcaption><code>110.jpg</code> which should have the intensity threshold set to 110. </figcaption></figure></div><div id="eec288a0-861f-4603-b715-88802fce9bfb" style="width:20%" class="column"><figure id="77a1230e-2472-4341-935d-aad088849546" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/150.jpg"><img style="width:272px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/150.jpg"/></a><figcaption><code>150.jpg</code> which should have the intensity threshold set to 150. </figcaption></figure></div><div id="76f63bec-5a60-4fb4-be79-9b9d3b5e6d24" style="width:20%" class="column"><figure id="30b6bcae-3a7a-42bd-9c37-ff44eaf3ae4f" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/155.jpg"><img style="width:283px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/155.jpg"/></a><figcaption><code>155.jpg</code> which should have the intensity threshold set to 155. </figcaption></figure></div><div id="21a0dffd-0939-4399-9f2f-1003d65911bb" style="width:20%" class="column"><figure id="30e87881-8b97-4e23-903c-c7a76d0287f8" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/160%201.jpg"><img style="width:240px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/160%201.jpg"/></a><figcaption><code>160.jpg</code> which should have the intensity threshold set to 160. </figcaption></figure></div><div id="08c07b51-9edc-4860-9eaa-e8edd23771c0" style="width:20%" class="column"><figure id="8fdd4308-6c4c-4720-a4fa-4ca467cd40a6" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/170.jpg"><img style="width:201px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/170.jpg"/></a><figcaption><code>170.jpg</code> which should have the intensity threshold set to 170. </figcaption></figure></div></div><p id="c83660e6-f4a8-467f-a6c9-10dca084df4a" class="">To run the program using a test file, change the file names that are assigned to <code>original_image</code> and <code>highlighted_image</code> in the <code>main</code> function, as well as the corresponding intensity threshold.   </p><h2 id="37b6a2ec-aba7-4288-b82d-6c47d5d61285" class="">Conclusion </h2><h3 id="1ec9504b-f646-4d4c-a32f-09c99b2985f0" class="">Limitations </h3><p id="a0223e58-c099-4d41-b4cd-374be4d8b77b" class="">Even though the algorithm works fairly well in almost all scenarios, there are a few limitations that are worth going over. </p><p id="67d6c232-6d34-4947-8f05-8d568890715d" class="">First, The idea of eliminating extraneous sufficiently red pixels by finding the maximum length and maximum width of the tumor, means that only one tumor can be detected. In nearly all cases, this will not matter since most positive patients only have one tumor, but in the case of multiple tumors, this algorithm will fail. However, this is solvable by taking the <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span></span><span>﻿</span></span> maximum lengths for <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span></span><span>﻿</span></span> tumors (this would require a separate algorithm in it of itself) and red screening them. </p><p id="d625cf5a-f9b0-4711-af22-52cc5977fa56" class="">Second, the algorithm works by first traversing over the entire image and then traversing only a smaller square window of the image where the tumor is located. For most cases, the tumor is round, meaning the maximum width and length will be similar to the window&#x27;s width and height respectively. However, for cases with jagged tumors that don&#x27;t have a round shape, this algorithm will fail to red screen partial pieces of the tumor. To solve this, a different approach needs to be taken. Several other approaches are described below. </p><h3 id="9c20b6cf-01fe-4960-b792-185a73404111" class="">Other solutions attempted </h3><p id="0a688b40-52d5-42fa-914c-5b19e403d884" class="">When solving this problem, I thought of several other potential solutions which I will briefly share here. These can be used to solve the limitations listed above. </p><p id="a1936c67-93fc-44cb-9dfc-245d2cc06c86" class=""><span style="border-bottom:0.05em solid"><strong>Edge detection </strong></span></p><p id="ba113922-b39c-4926-ab86-20b52586ecf7" class="">A common task in computer vision is edge detection. In present day, this is usually automated through deep learning algorithms. However, prior to the AI age, several different mathematical methods were invented to detect edges in an image. Specifically, a sharp contrast in the grayscale value between two pixel values should constitute an edge. This should work for most of the pixels, but not all of the pixels. Thus, there exists several mathematical methods to get around that limitation. One method that I thought about takes a concept from the Canny edge detection method: the Sobel Operator (invented at Stanford). This works by calculating derivatives to find where the rate of change is high. At these pixels, there is likely to be an edge. The following image shows a good representation of why this is the case. </p><figure id="288afe55-a17c-435f-9f9e-b7297d35e82d" class="image"><a href="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-10-15_at_11.29.01_PM.png"><img style="width:480px" src="Untitled%2042fab4f0fd60422ca6078e0b7b9d4395/Screen_Shot_2020-10-15_at_11.29.01_PM.png"/></a><figcaption>Image obtained from the video listed <a href="https://www.youtube.com/watch?v=F8mA5sfAb24&amp;feature=emb_logo">here</a>, from a Udacity course. </figcaption></figure><p id="c87e514f-ca0e-4a3a-8cd5-ddd0ddc45f9e" class="">If you graphed all of the pixel values on a graph, the points at which the grayscale values experienced a sharp change (which can be found by taking the derivative), would constitute an edge. </p><p id="40b6b158-db6a-4501-a940-0d5c20ea16d5" class=""><span style="border-bottom:0.05em solid"><strong>Machine learning </strong></span></p><p id="deda1627-b010-40e9-b191-1845ea7f8b2d" class="">If enough data was able to be obtained, the most optimal solution to solve this problem would be to use machine learning. The past decade has seen a rapid increase in the number of research papers applying AI algorithms to medical imaging problems. For this problem, a convolutional neural network trained on annotated examples, would most likely work best for segmenting the tumor and classifying the scan. Specifically, the U-Net architecture, described in the paper listed <a href="https://arxiv.org/abs/1505.04597">here</a>, has proven to be the most optimal convolutional neural network architecture for solving biomedical imaging segmentation tasks. As mentioned however, the limitation is that a plethora of annotated data points would need to be available. </p><hr id="cb188135-60de-446e-ad93-872c17951cd2"/><h2 id="4a48d93b-46be-41e1-ac1d-4f4960370eed" class="">Sources  </h2><ul id="0b51f9d8-b49d-4642-8e00-19398ccad564" class="bulleted-list"><li><a href="https://www.ginifab.com/feeds/pms/pms_color_in_image.php">RGB value identifier</a> - I used this to see what the RGB values might be for a tumor vs. the rest of the MRI scan. This greatly helped in deciding the appropriate threshold values for each image.</li></ul><ul id="6dbbb14e-7c02-4769-b4f6-5521ab00f5de" class="bulleted-list"><li>The data points (brain MRI images) used in this project were obtained from the dataset listed <a href="https://www.kaggle.com/navoneel/brain-mri-images-for-brain-tumor-detection">here</a>. </li></ul></div></article></body></html>
