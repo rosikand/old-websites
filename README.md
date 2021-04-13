@@ -1,2 +1,2 @@
-# rosikand.github.io
-🗂 Personal website src
+# Personal website 
+Personal website source code powering [rosikand.github.io](https://rosikand.github.io/).
