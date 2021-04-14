@@ -15,7 +15,20 @@
             .nav-links:hover {
               color: #e00;
             }
-          </style>
+        </style>
+        <!-- For toggle button -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+          $("#description-content").hide();
+        });
+
+            $(document).ready(function(){
+            $("#description-toggle").click(function(){
+              $("#description-content").toggle();
+            });
+          });
+        </script>
     </head>
     
     <body>
@@ -312,10 +325,15 @@
     <br>
 
     <h2 class="h2-card" style="text-align: center;">Projects</h2>
-    <!-- <div class="proj-descriptions center">
+
+    <h5 id="description-toggle" class="nav-links">About</h5>
+
+    <div class="proj-descriptions center" id="description-content">
     My projects are divided into two categories: "Deployed" and "Personal". Deployed means that the project was created with the intention to serve a purpose and for other people to use. Personal projects are ones that I did for my own purpose and intellectual curiosity.
-    </div> -->
-    <!-- <br> -->
+    </div>
+
+        <h3>Personal</h3>
+
     
     <main class="container">
       <div class="card">
@@ -456,36 +474,7 @@
 </div>
         
 
-        
-         <div class="card">
-        <div class="img-card" >
-          <div class="inner-image-card">
-            <img src="images/dice-picture.jpeg" alt="Dice emoji" style="border-radius: 10px; border: solid 1px #4a4c4e;">
-          </div>
-          </div>
-        <div class="content"><h3 style="text-align: left;"><a
-            href="http://randomusername.pythonanywhere.com/"
-            target="_BLANK"
-            >Random Username Generator</a
-          ></h3><p style="text-align: left;">A simple program that generates random usernames wrapped in a Flask app.</p>
-        
-        <button class="code-button">
-            <b style="color: rgb(55, 58, 61);"><a
-                href="https://github.com/rosikand/random-username"
-                target="_BLANK"
-                >Code</a
-              ></b>
-        </button>
-            
-        <button class="poster-button">
-      <b style="color: rgb(55, 58, 61);"><a
-          href="http://randomusername.pythonanywhere.com/"
-          target="_BLANK"
-          >Program</a
-        ></b>
-        </button>
-        </div>
-    </div>     
+   
         
         
         
@@ -514,7 +503,54 @@
   </button>
   </div>
 </div>
-    </main>
+
+
+</main>
+
+
+<h3 style="margin-top: -7px">Deployed</h3>
+
+<main class="container">
+       
+         <div class="card">
+        <div class="img-card" >
+          <div class="inner-image-card">
+            <img src="images/dice-picture.jpeg" alt="Dice emoji" style="border-radius: 10px; border: solid 1px #4a4c4e;">
+          </div>
+          </div>
+        <div class="content"><h3 style="text-align: left;"><a
+            href="http://randomusername.pythonanywhere.com/"
+            target="_BLANK"
+            >Random Username Generator</a
+          ></h3><p style="text-align: left;">A simple program that generates random usernames wrapped in a Flask app.</p>
+        
+        <button class="code-button">
+            <b style="color: rgb(55, 58, 61);"><a
+                href="https://github.com/rosikand/random-username"
+                target="_BLANK"
+                >Code</a
+              ></b>
+        </button>
+            
+        <button class="poster-button">
+      <b style="color: rgb(55, 58, 61);"><a
+          href="http://randomusername.pythonanywhere.com/"
+          target="_BLANK"
+          >Program</a
+        ></b>
+        </button>
+        </div>
+    </div>   
+
+</main>
+
+
+
+
+
+
+
+
   </div>
 
 </div>
