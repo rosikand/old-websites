@@ -3,3 +3,6 @@ Hello! Welcome to my journal! I will be logging things here informally. More spe
 
 [2021-04-14 12:00] "Paperlets"
 I was reading Scott Aaronson's blog and came across the notion of "Paperlets"--informal unpublished/not fully written research papers. Read more [here](https://www.scottaaronson.com/blog/?p=1902).
+
+[2021-04-14 12:00] On using pseudonyms
+I recently came across [this](https://academia.stackexchange.com/a/71018) Stack Exchange post which I found interesting. More specifically, that answer proposed a way in which one can use cryptography to later prove something they wrote pseudonymously. 
