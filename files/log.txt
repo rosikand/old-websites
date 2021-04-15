@@ -1,2 +1,5 @@
 [2021-04-14 12:00] First post.
 Hello! Welcome to my journal! I will be logging things here informally. More specifically, I plan to occasionally post "Today I learned..." posts. Enjoy!
+
+[2021-04-14 12:00] "Paperlets"
+I was reading Scott Aaronson's blog and came across the notion of "Paperlets"--informal unpublished/not fully written research papers. Read more [here](https://www.scottaaronson.com/blog/?p=1902).
