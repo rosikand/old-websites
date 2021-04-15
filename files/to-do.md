@@ -1,0 +1,1 @@
+- Add [timeline](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_timeline) for CV page highlighting and annotating relevant experiences 
