@@ -1,1 +1,2 @@
 - Add [timeline](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_timeline) for CV page highlighting and annotating relevant experiences. 
+- Maybe make research page elements a little more formal than the horizontal cards. I am thinking of a table structure consisting of several rows (Title, People, One-liner). 
