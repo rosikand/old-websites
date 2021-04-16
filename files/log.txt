@@ -6,3 +6,6 @@ I was reading Scott Aaronson's blog and came across the notion of "Paperlets"--i
 
 [2021-04-14 12:00] On using pseudonyms
 I recently came across [this](https://academia.stackexchange.com/a/71018) Stack Exchange post which I found interesting. More specifically, that answer proposed a way in which one can use cryptography to later prove something they wrote pseudonymously. 
+
+[2021-04-16 12:00] Scholarly correspondence 
+In the days prior to the internet, famous mathematical and academic discoveries were often as a result of (or in fact, the actual case) discourse through letters between scholars. I would love to see that spirit revived in some modern way that is adapted for the internet. 
