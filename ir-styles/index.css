@@ -1,0 +1,105 @@
+body { 
+    font-family: "open sans";/*verdana";*/
+    font-family: "verdana";
+    color: #555;
+}
+h1 { 
+    font-weight: 550;
+    /*position: relative;*/
+    text-align: center;
+    top: -12px;
+}
+h1 small {
+    font-size: 14px;
+    float: right;
+    padding-top: 11px;
+    line-height: 1.8em; 
+}
+h2 {
+   font-size: 30px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   text-align: left;
+   font-weight: bold;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: bold;
+    border-left: 1px solid #C1292E;
+    padding-left: 0.5em;
+}
+h3 small {
+    font-weight: 400; 
+}
+
+h5 {
+    font-size: 24px;
+    font-family: Lato;
+    font-weight: 300;
+}
+.container {
+    max-width: 750px; 
+    /* BOX BORDER! */
+    border: 1px solid #00000013;
+    border-radius: 10px;
+}
+@media (min-width: 768px) { 
+    .container { 
+        margin-top: 50px; 
+    } 
+}
+
+img.headshot {
+    width:275px;/*150px;*/
+    max-width:100%;
+    float: right;
+}
+
+a.pub_img {
+    margin-top: auto;
+    margin-bottom: auto;
+    min-width: 80px; !important;
+    max-width: 80px; !important;
+    min-height: 80px; !important;
+    max-height: 80px; !important;
+    margin-right: 20px; !important;
+}
+
+img.pub_img {
+    margin-top: auto;
+    margin-bottom: auto;
+    
+    max-width: 80px; !important;
+ 
+    max-height: 80px; !important;
+  
+}
+
+#demobox {
+  background-color: #cfc ;
+  /*background-color: #e2e2e2;
+  background-color: #EAE2B7;*/
+  padding: 10px ;
+  /*border: 1px solid #e2e2e2 ;*/
+  border-radius: 10px;
+}
+
+a {
+  /*color: #C1292E;
+  color: #F1D302;
+  color: #8c1515;
+  color: #0098db;*/
+  color: #e81c4f;
+}
+
+a:hover {
+    color: #C1292E;
+}
+
+.fa_custom {
+    color: #C1292E;
+    border-color: #C1292E;
+    border-width: 1pt;
+}
+
