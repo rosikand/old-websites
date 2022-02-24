@@ -41,7 +41,7 @@ h5 {
 .container {
     max-width: 750px; 
     /* BOX BORDER! */
-    border: 1px solid #00000013;
+/*     border: 1px solid #00000013; */
     border-radius: 10px;
 }
 @media (min-width: 768px) { 
