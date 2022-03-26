@@ -103,3 +103,12 @@ a:hover {
     border-width: 1pt;
 }
 
+.rightalign {
+    /* margin: auto; */
+    margin-left: auto; 
+    margin-right: 0;
+    width: 33%;
+    padding: 10px;
+    font-size: 13px;
+}
+
