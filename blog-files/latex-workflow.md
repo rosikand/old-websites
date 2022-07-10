@@ -1,3 +1,5 @@
+# My Current LaTeX Workflow: Using LaTeX with VS Code
+
 Date: 05/04/2021
 
 ## Backstory (for those interested)
