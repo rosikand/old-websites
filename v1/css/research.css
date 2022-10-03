@@ -1,0 +1,41 @@
+.research_title {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 50%;
+}
+
+.page_content {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.image_figure {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 60%;
+}
+
+#pdf_viewer {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 87%;
+  height: 45rem;
+  border: 1rem solid rgba(0, 0, 0, 0.1);
+}

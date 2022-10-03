@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RS - EffuseNet</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="cards.css" />
+    <link rel="icon" type="image/png" href="images/stannyfavicon.png">
+    <style>
+      .research-content {
+        width: 55%;
+        margin: auto;
+        text-align: center;
+      }
+
+      .image_figure {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+      }
+      
+      .abstract-text {
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: small;
+        width: 80%;
+        text-align: center;
+        margin: auto;
+      }
+
+      #pdf_viewer {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 45rem;
+        border: 1rem solid rgba(0, 0, 0, 0.1);
+      }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <table class="header-table">
+      <!-- Make table three columns wide -->
+      <colgroup>
+        <col width="10%" />
+        <col width="25%" />
+        <col width="20%" />
+        <col width="15%" />
+        <col width="20%" />
+        <col width="10%" />
+      </colgroup>
+      <tr>
+          <td>
+            <img class="pic" src="images/prof.jpg" alt="Profile Pic">
+          </td>
+          <td>
+            <h2>
+              <a href="index.html">Rohan Sikand</a>
+            </h2>
+          </td>
+          <td>
+
+          </td>
+          <td>
+            <div class="centered">
+                <h3><a href="research.html">Research</a></h3>
+            </div>
+          </td>
+          <td>
+            <div class="centered">
+                <h3><a href="projects.html">Projects</a></h3>
+            </div>
+          </td>
+          <td>
+            <div class="centered">
+                <h3><a href="links.html"
+                  >Links</a
+                ></h3>
+            </div>
+          </td>
+      </tr>
+    </table>
+    <hr>
+
+    <!-- Content -->
+    <div class="every-card">
+    <br>
+
+    <div class= "research-content">
+
+    <!-- Title -->
+    <h4 class="h2-card">EffuseNet: Deep Learning for Differentiating Between Exudative and
+      Transudative Pleural Effusions Through Ultrasounds</h4>
+    
+    <hr>
+    
+      <!-- Poster -->
+    <h5>Posters</h5>
+    <img src="images/effusenet_visual.png" class="image_figure" />
+    <img src="images/effusenet_poster.png" class="image_figure" />
+
+    <!-- Abstract -->
+    <h5>Abstract</h5>
+    <p class="abstract-text">
+      Pleural effusion, an abnormal collection of fluid in the pleural space,
+        is the most common presentation of pulmonary disease with over 1.5
+        million cases identified per year in the United States alone. Patients
+        presenting with symptoms suspicious for an effusion often undergo
+        diagnostic chest radiographs to identify the presence of an effusion.
+        However, these radiologic studies cannot definitively diagnose whether
+        the effusion is a transudate or an exudate. The only current method
+        known to accurately differentiate the type of effusion present is to
+        perform a thoracentesis–an invasive procedure where the excess fluid is
+        drained and then analyzed using Light’s criteria. However, a
+        thoracentesis is an inefficient and expensive procedure that may not be
+        readily available and can further debilitate critically ill patients,
+        often compromising or delaying treatment. Conversely, thoracic
+        sonography, a non-invasive modality, has traditionally been used to
+        diagnose the presence of a pleural effusion, but radiologists are unable
+        to use an ultrasound to accurately identify the type of effusion. This
+        dilemma prompted my current research question: is there a predictable
+        and reliable method to differentiate between transudative and exudative
+        pleural effusions based solely on ultrasound images? To this end, I
+        developed EffuseNet, a program that uses deep convolutional neural
+        networks trained on ultrasound images and associated labels to
+        non-invasively differentiate between transudative and exudative pleural
+        effusions. Several models and methods were experimentally performed
+        including convolutional neural networks and transfer learning. The
+        models used in the experiment were then tested on test data and
+        evaluated using several different metrics such as a confusion matrix and
+        classification accuracy. Although my program is novel in its
+        application, the results were statistically significant. With such
+        widespread prevalence of pleural effusions diagnosed annually,
+        EffuseNet, the first of its kind, is revolutionary and adds a
+        significant benefit to society.
+    </p>
+
+    <!-- Paper (JS PDF Viewer) -->
+    <h5>Paper</h5>
+    <p class="abstract-text">Please contact me at rsikand at stanford dot edu</p>
+  
+  </div>
+  </div>
+  
+    
+</body>
+</html>

@@ -1,0 +1,627 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Programming a Neural Network Architecture From Scratch </title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="ba8e80e0-a4e3-421c-967a-1c35dd7d44ab" class="page serif"><header><div class="page-header-icon undefined"><span class="icon">🧠</span></div><h1 class="page-title">Programming a Neural Network Architecture From Scratch </h1></header><div class="page-body"><p id="ad6ddf1e-872e-429c-b0c0-3a5ccb7ad634" class=""><strong>By: Rohan Sikand </strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9fa68c7e-c80c-491b-82c9-f13980f687b9"><div style="font-size:1.5em"><span class="icon">📌</span></div><div style="width:100%">This project was my contest submission for my <em>CS 106A: Programming Methodology</em> class. To compliment my program files, I put this document together which documents my coding process throughout the project. </div></figure><p id="3213783e-ea37-4df3-b8b5-9abffb663b90" class="">If you would like the source code for this project, please email me at rsikand@stanford.edu </p><p id="a7e5b10a-0644-44c4-a898-6f0ef9267c88" class=""><span style="border-bottom:0.05em solid"><strong>Table of contents: </strong></span></p><nav id="779be0e6-11c2-41b2-a8c0-1fb82f40f8dd" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#95174c5c-c188-42bc-8d74-c8a16429b427">Introduction </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fbd4089f-ba3f-4743-a040-3fc47a832536">File Structure </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#94350f30-7000-4668-bbdf-50ae64eaca0a">Milestones </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e32a07c4-a38e-4a92-9c16-27d277039390">Milestone 1: Singular Neuron</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#91c49c92-ef49-4584-892e-cd3c4d4f7219">Milestone 2: Layer of Neurons</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8e643382-80d9-401b-a521-543c6088094b">Milestone 3: Batches of Data </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#667807e6-7c74-4875-ac1b-8cefae3d5d6b">Milestone 4: Adding More Layers</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2f4e5135-4b26-477b-9533-484ecb9ea641">Milestone 5: Adding Activation Functions </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#28e2c857-56ec-43ed-849f-ffc66ec99b02">im_sample_run.py Neural Network </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#91b2ab2f-7465-49be-ab97-d720aefe4b6c">External libraries used </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d547ca48-c1a8-497a-9e2f-0f872f4354e6">Annotated Reference List </a></div></nav><hr id="00748e71-b344-45e4-926f-79aecdc2a90f"/><h2 id="95174c5c-c188-42bc-8d74-c8a16429b427" class="">Introduction </h2><p id="60563e0d-84d5-4fef-a6a7-165386d64286" class="">For this contest, I decided to build an entire neural network architecture from scratch using only Python and some extra libraries such as Numpy and Pillow. Usually, to build a neural network, it is common to use extremely powerful libraries such as PyTorch, Tensorflow, or Keras. These are great, but if you do not fully understand the underlying concepts, then you will eventually hit a point where simple debugging won&#x27;t help. Thus, my aim with this project is to code a neural network from scratch using base Python so that I can amplify my understanding of how neural networks work. As mentioned, I decided to use some extra libraries to assist with necessary tasks that are either not possible in raw Python based on our knowledge learned from class (i.e. image processing without Pillow), or the efficiency and number of lines of code for a particular concept is very long and wouldn&#x27;t make much sense to do in raw Python. However, the main takeaway is that the main concepts of neural networks will still all be done in Python—so the ideological goal of this project remains in tact. To elaborate, I specify what I used each library for in the &quot;External Libraries Used&quot; section. </p><p id="9ce56f45-3234-4c9b-91b4-a8d23e22e6b4" class="">The main goal of this project was to understand the <strong>architecture</strong> of a neural network at a high level. Thus, I did not code any training programs that would actually make the neural network functional. Eventually, I plan to come back to this project and code the complex programs needed to train a neural network—especially after taking some more higher-level math classes to understand the concepts. Thus, this neural network is not actually functional. However, in the runner file (see below), I printed the outputs for each layer in the neural network, as well as a sample output. </p><h2 id="fbd4089f-ba3f-4743-a040-3fc47a832536" class="">File Structure </h2><p id="c01d5b8d-e1a1-4dc4-bff3-1c07cd043acc" class="">I use this section for talking about file structure—that is, how the files in this folder should come together and form a coherent, runnable neural network.</p><p id="2e9745ab-b58e-489a-be54-8183af2a5f3c" class="">Coding neural network, and all other machine learning algorithms, are very different than traditional programming tasks—it isn&#x27;t an input/output scenario. Instead, things such as data gathering, data processing, building the neural network, and running data through the neural network all need to be done. Thus, for good style, usability, and organization, I divided the entire project into several files. The main, runner file is named &#x27;im_sample_run.py&#x27;. This is the file that puts everything together to run and print the outputs of the neural network. This file uses several imports from other files to put everything together. However, in understanding and coding the neural network, several files were not actually needed in the end, but I still submitted them because I think they were fruitful in my understanding to complete the full project. I also think the reader will appreciate the base concepts separated by files so that the individual concepts that constitute a neural network are illustrated in isolation. The files that are used in the execution of the neural network are starred below. </p><p id="360f6cac-8414-4ced-a742-b15fdb16c837" class="">In summary, here is a rough list of the file structure: </p><ul id="60b1e2c6-06d6-41fe-8610-83f734d74e9c" class="bulleted-list"><li><code>single_neuron.py</code> - from milestone 1 (see below), this is a sample single neuron. </li></ul><ul id="86cf9cf2-fd6f-4cc9-b867-52e6a19f00b3" class="bulleted-list"><li><code>layer_python.py</code> (milestone 2) - a program which strings together single neurons to create a layer. This was done in raw Python in this file. </li></ul><ul id="dabc0cbb-7696-4418-8f94-9bf442014fb3" class="bulleted-list"><li><code>layer_numpy.py</code> (milestone 2) - the same functionality as the program above except the calculations were done with Numpy. </li></ul><ul id="17ecbf57-9e64-48ac-902c-716c6a705dea" class="bulleted-list"><li><code>batches.py</code> (milestone 3) - the same functionality as the program above except now there are multiple (batches) of input data points. </li></ul><ul id="99495beb-b171-4d9d-9467-42e040c08722" class="bulleted-list"><li>* fully_connected.py (milestone 4) - this is a file which contains a class for creating a fully connected layer. This is a fundamental building block for creating the complete network. In the runner file, an instance of this class creates a layer.  </li></ul><ul id="48375378-27ea-45c0-a9d8-f749e00d158f" class="bulleted-list"><li>* activation_functions.py (milestone 5) - this file stores several activation functions needed in building the neural network. </li></ul><ul id="b494e623-853f-4492-8ae2-5668c2f1cf59" class="bulleted-list"><li>* <code>transformer.py</code> - transforms an image into a flattened list containing its pixel values (so that it can be inputted into a neural network). </li></ul><ul id="995cac4d-e27f-4113-97e6-905f11372f9c" class="bulleted-list"><li>* <code>library.py</code> - since I needed to create and use a few helper functions, I created a separate file to store all of these. Then, when needed, I imported the specific functions needed. Also, a sample dataset generator function is stored here. That function was obtained from the Neural Networks from Scratch book (see references below). Though, in the runner file im_sample_run, I didn&#x27;t actually use this sample dataset, but it can be easily used if wanted. </li></ul><ul id="98e61ac3-3a0c-4feb-bffd-f50c323d8b78" class="bulleted-list"><li><code>im_sample_run.py</code> - used to actually execute and <em>run</em> the neural network. The reader should execute this file specifically. <ul id="6cba09c8-393f-4197-8749-078c79c4038f" class="bulleted-list"><li>Everything is imported into this file and all of the calls are made here to construct the neural network. </li></ul><ul id="5bcf8406-f8c9-4b8a-a14c-be201b0a8022" class="bulleted-list"><li>In the sample run, a sample data point, which is an image of a Chinese character, is fed through the neural network. This data point was obtained from the Chinese MNIST dataset found at the link: <a href="https://www.kaggle.com/gpreda/chinese-mnist">https://www.kaggle.com/gpreda/chinese-mnist</a> </li></ul></li></ul><hr id="7f61f0c0-d2ee-4bd7-9407-9a1a0d0ecd14"/><h2 id="94350f30-7000-4668-bbdf-50ae64eaca0a" class="">Milestones </h2><p id="fa886f7d-602f-41b2-b170-a2bb852f1ca8" class="">Like we have been doing with assignments, I broke this project into different milestones. Some files in certain milestones are not actually useful for the runner program to make the whole neural network function. However, the concepts of such programs were eventually used. </p><h3 id="e32a07c4-a38e-4a92-9c16-27d277039390" class="">Milestone 1: Singular Neuron</h3><p id="446c00ae-e7cf-4e32-98e6-f32c270aa552" class="">The basis for all neural networks are of course neurons. In the file <code>single_neuron.py</code>, I programmed a singular sample neuron and calculated its output given some data. The dummy data is simply numbers generated randomly. The following diagram shows a drawing of the neural network thus far (the first layer is the sample input layer).  </p><figure id="a76bcbb3-17c1-4d3a-a7c4-fb5d01057298" class="image"><a href="Programming%20a%20Neural%20Network%20Architecture%20From%20Scr%20a76bcbb317c14d3aa7c4fb5d01057298/Screen_Shot_2020-11-14_at_10.46.58_PM.png"><img style="width:288px" src="Programming%20a%20Neural%20Network%20Architecture%20From%20Scr%20a76bcbb317c14d3aa7c4fb5d01057298/Screen_Shot_2020-11-14_at_10.46.58_PM.png"/></a><figcaption>The singular neuron who&#x27;s output was calculated using input neurons representing a dummy data point. </figcaption></figure><h3 id="91c49c92-ef49-4584-892e-cd3c4d4f7219" class="">Milestone 2: Layer of Neurons</h3><p id="2258922a-56b4-4335-87c5-8c7fa65c4a60" class="">The next step was to string together multiple neurons. The same concepts apply and the neural network now looks like this (the first layer is the input layer): </p><figure id="ee5dcca0-e7ff-4d92-ad9d-94c6bdcc6328" class="image"><a href="Programming%20a%20Neural%20Network%20Architecture%20From%20Scr%20a76bcbb317c14d3aa7c4fb5d01057298/Screen_Shot_2020-11-14_at_10.55.07_PM.png"><img style="width:288px" src="Programming%20a%20Neural%20Network%20Architecture%20From%20Scr%20a76bcbb317c14d3aa7c4fb5d01057298/Screen_Shot_2020-11-14_at_10.55.07_PM.png"/></a></figure><p id="0413943a-009e-4afa-948b-4017263deee6" class="">Though the diagram shows 3 neurons in the output layer, my program contains a constant designating the amount of neurons the user wants to generate. Similarly, the amount of neurons per input data point can also be set. </p><p id="969edbf7-76f1-4d73-9052-b75314d201e8" class="">I first wrote this program in raw Python and that file is named <code>layer_python.py</code>. Then, for simplicity and efficiency, I wrote the same program utilizing Numpy in the file named <code>layer_numpy.py</code>. </p><h3 id="8e643382-80d9-401b-a521-543c6088094b" class="">Milestone 3: Batches of Data </h3><p id="17bf0757-4e4e-4706-b5bf-b133f4ca919c" class="">When training neural networks, we want to feed them batches of data so that they compute in parallel (which is why GPUs are so useful). Also, we need batches so that the neural network does not overfit because it would fit each specific data point too well—we want generalization instead. Thus, in the file <code>batches.py</code>, I created more dummy data points and fed them through to calculate the output for each neuron in the output layer, for each data point. </p><p id="d11901ee-bd4a-476c-b7f0-b28f38e2b823" class="">Numpy was used to do the calculations since it can do elemental-wise multiplication (dot products) with one line of code. The only thing that changed here (from the program <code>layer_numpy.py</code>) is that, since the input data variable is now a 2d list instead of a 1d list, the input data variable needed to be transposed which was done using Numpy. Furthermore, to do this, the input data variable needed to be converted to a Numpy array first. </p><p id="cb25bc39-8a7b-44a0-ae2b-7fad500dd525" class="">The overall structure of the neural network is identical however.  </p><h3 id="667807e6-7c74-4875-ac1b-8cefae3d5d6b" class="">Milestone 4: Adding More Layers</h3><p id="1d279f85-e23b-4bb2-a161-6ac5fa9fda18" class="">In this milestone, I added more than one layer. So now the neural network has layers called &quot;hidden layers&quot; making it a deep neural network. Eventually, I will want to add more than one new layer, so object oriented programming techniques are utilized here. Thus, when I want to add a new layer, I can do so by creating an instance of a layer class. </p><p id="6be6a840-9248-477a-b2ea-29d63983aaa0" class="">What is important to note here is that the outputs of each layer now become the inputs for the next layer. In constructing the new layer, we need another set of weights and another set of biases. The length of the weights set (or the number of biases) will be equal to the amount of neurons in the new layer—this will be a parameter for the class (an instance variable). Also, I should note that the first input layer is not created through this object—this layer will eventually be composed of real data not just dummy data. Thus, this object will be for creating hidden layers (and an output layer). Nowadays there are hundreds of different types of layers you can use (i.e. convolutional), but for the scope of this project, only fully-connected layers are used (which use the same concepts as the layer created in milestone 2). </p><p id="8689ca44-6722-4063-891a-ce4a28cf267d" class="">The fully-connected layer class (fc_layer) is stored in the file named fully_connected.py. </p><h3 id="2f4e5135-4b26-477b-9533-484ecb9ea641" class="">Milestone 5: Adding Activation Functions </h3><p id="075f6d00-d7da-4a83-a800-ad431ba917e5" class="">Activation functions are needed for each neuron. The same activation function is used for every neuron except for the one&#x27;s in the last layer. In classification problems, the last layer is usually a softmax. In my sample neural network, I used ReLU (rectified non linear unit) for each fully connected layer and softmax for the last layer. </p><p id="58dcf903-b722-4094-985c-da9d36a1d801" class="">Since the activation functions are mathematical equations, the Python syntax is the same</p><p id="559504fb-dad9-490a-96e3-3de1b00c8a99" class="">for all implementations. Thus, I used the code from the neural networks from scratch book (see references below) for the activation functions and cited that I did so in the program file. </p><p id="51cc7254-4b88-4d8e-8f2e-ff2584dd66e0" class="">The file containing each activation function (each one is a class) is named activation_functions.py. </p><h2 id="28e2c857-56ec-43ed-849f-ffc66ec99b02" class="">im_sample_run.py Neural Network </h2><p id="ade4e616-5388-4505-adec-1a332315d092" class="">In the im_sample_run<a href="http://runney.py">.py</a> file, everything is put together. The reader should run this program specifically. </p><p id="587b022a-03c9-4ad8-9c4a-307bc6cfcca7" class="">A sample run of the neural network is performed with an image data point for the input layer. The following image was used as the input: </p><figure id="a643c46d-e853-4d61-b11a-39716c19f55e" class="image"><a href="Programming%20a%20Neural%20Network%20Architecture%20From%20Scr%20a76bcbb317c14d3aa7c4fb5d01057298/chinese_mnist.jpg"><img style="width:192px" src="Programming%20a%20Neural%20Network%20Architecture%20From%20Scr%20a76bcbb317c14d3aa7c4fb5d01057298/chinese_mnist.jpg"/></a><figcaption>chinese_mnist.jpg which is from the Chinese MNIST dataset </figcaption></figure><p id="d9e9c62f-2ca7-4f10-a7c1-52bc39fb75d2" class="">The image size is <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>64</mn></mrow><annotation encoding="application/x-tex">64</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">4</span></span></span></span></span><span>﻿</span></span> x <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>64</mn></mrow><annotation encoding="application/x-tex">64</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">4</span></span></span></span></span><span>﻿</span></span>. Thus, the 1d flattened list of pixel values was of length <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>64</mn><mo>∗</mo><mn>64</mn><mo>=</mo><mn>4096</mn></mrow><annotation encoding="application/x-tex">64*64=4096</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mord">9</span><span class="mord">6</span></span></span></span></span><span>﻿</span></span>. </p><p id="05000ecd-4478-478b-b4c8-2321844536a3" class="">Though this image was specified in the file, any image would work. </p><p id="5720516c-30f7-42d3-a715-3aa85c686b78" class="">The neural network architecture created here contains 5 layers in total: the input layer, three hidden layers, and a final output layer. The architecture is shown below: </p><figure id="9aa5b685-3fe2-4b4f-a902-43d41361f7fd" class="image"><a href="Programming%20a%20Neural%20Network%20Architecture%20From%20Scr%20a76bcbb317c14d3aa7c4fb5d01057298/Screen_Shot_2020-11-15_at_6.59.10_PM.png"><img style="width:624px" src="Programming%20a%20Neural%20Network%20Architecture%20From%20Scr%20a76bcbb317c14d3aa7c4fb5d01057298/Screen_Shot_2020-11-15_at_6.59.10_PM.png"/></a><figcaption>The architecture used. The input layer is not shown here since it is 4096 neurons long and would be impossible to display. </figcaption></figure><p id="07592d12-e027-4c01-897e-4b5bbaefdb52" class="">Each layer&#x27;s output is printed out to the console. </p><p id="f8313647-69bb-48ce-8726-faab6f90fd28" class="">The <strong>layer summary</strong> is: </p><ul id="77b002e4-ba8c-4e2a-9f7c-833368861a06" class="bulleted-list"><li>Input layer: 4096 neurons </li></ul><ul id="cefeaedd-9b2c-4b49-96ca-ec74a2218e96" class="bulleted-list"><li>Hidden layer 1 fully-connected layer, 7 neurons </li></ul><ul id="7fc61e14-d6c7-46a2-89ab-6e14051dcbd8" class="bulleted-list"><li>Hidden layer 2: fully-connected layer, 7 neurons </li></ul><ul id="31394674-eae2-4be8-afb0-91135054fda0" class="bulleted-list"><li>Hidden layer 3: fully-connected layer, 7 neurons </li></ul><ul id="e33b90d0-f9a0-4960-bcf4-8ec092544544" class="bulleted-list"><li>Output layer: fully-connected layer, 3 neurons </li></ul><h2 id="91b2ab2f-7465-49be-ab97-d720aefe4b6c" class="">External libraries used </h2><ul id="9b65cc3c-b7d6-4fe9-8300-421319396041" class="bulleted-list"><li><strong>SimpleImage and Pillow</strong>: I used these for basic image processing tasks akin to the tasks we worked on in class for Assignment #3 and lecture #10. Specifically, I used SimpleImage to gather pixel data from images so that the neural network can read in images. </li></ul><ul id="71d9079a-839c-4087-b66c-5ad43bb68882" class="bulleted-list"><li><strong>Numpy:</strong> Neural networks involve lots of complex math. Most of the mathematical concepts can be programmed in raw Python, but it would be rather complicated and inefficient. Numpy is an extremely powerful mathematical library for Python and the use of it here still allows me to understand how a neural network works, while coding concepts in a much more efficient manner. As an example, calculating a dot product is as simple and efficient as <code>np.dot</code>, though you still need to know how to and when to use a dot product to understand the functionality. </li></ul><hr id="f8c31cc5-b85f-4ca6-89cd-9d0b6b8066f7"/><h2 id="d547ca48-c1a8-497a-9e2f-0f872f4354e6" class="">Annotated Reference List </h2><p id="895d34a3-7f06-4cbb-8e93-def79ff22fbb" class="">Coding a complex neural network from scratch is tremendously difficult task that requires a lot of knowledge. To obtain such knowledge, at both the theoretical level and the programming level, I consulted the sources below. </p><ul id="b8912ea9-a12b-460b-8993-96e9f0107a65" class="bulleted-list"><li><strong>Neural Networks from Scratch in Python by Harrison Kinsley and Daniel Kukiela</strong><ul id="4ba20615-861b-4a09-beea-880d7c3dca78" class="bulleted-list"><li>This book is a great piece of work (over 600 pages) that takes you through building a neural network from scratch in Python. This was the primary source I used to as a guide to help me through the parts. Specifically, I like the way that the book is organized and utilized the table of contents to help me formulate some of the milestones. The book contains lots of code, but I tried to refrain from looking at the code for most parts and attempted to program most parts by myself utilizing the knowledge I have and the book&#x27;s text about the theory. Furthermore, to ensure transparency, I used in-text citations in the form of Python comment footnotes when I used code from this book. </li></ul><ul id="18e7276d-b718-4568-9fd2-7b03e51cf590" class="bulleted-list"><li>Also, in addition to the book, Harrison Kinsley, also known as sentdex on YouTube, posted a useful video series going over the first couple of chapters in brief. That playlist can be found at: <a href="https://www.youtube.com/watch?v=Wo5dMEP_BbI&amp;list=PLQVvvaa0QuDcjD5BAw2DxE6OF2tius3V3">https://www.youtube.com/watch?v=Wo5dMEP_BbI&amp;list=PLQVvvaa0QuDcjD5BAw2DxE6OF2tius3V3</a> </li></ul></li></ul><ul id="1a0ea518-646b-46cc-8db3-8e599a02d39f" class="bulleted-list"><li><strong>Stanford CS 231N lectures and notes</strong><ul id="841cfc3f-2038-4989-be41-a3f8b3d098fb" class="bulleted-list"><li>This class is a fantastic resource and I hope to eventually enroll in this class first hand sometime during my Stanford career! </li></ul></li></ul><ul id="dc1b80ad-7470-4f05-b78b-3f43f9669e97" class="bulleted-list"><li><strong>3Blue1Brown Neural Network playlist</strong><ul id="7f28eb08-ef07-4e71-a721-77865eec693c" class="bulleted-list"><li>This resource was extremely for helping me understand the theory behind the math used in neural networks. </li></ul></li></ul><ul id="cc4d762c-7a1b-4a0e-8e90-a854d0f3f49d" class="bulleted-list"><li>This video, <a href="https://www.youtube.com/watch?v=ILsA4nyG7I0">https://www.youtube.com/watch?v=ILsA4nyG7I0</a>, by Brandon Rohrer was also helpful. </li></ul><ul id="bc5cb1ce-1c64-4c3d-ac28-3c9cb609ea05" class="bulleted-list"><li><strong>Prior knowledge </strong><ul id="3c04626d-3fe3-4aea-bf40-342a076b7c93" class="bulleted-list"><li>I love machine learning and it is what I hope to work on in my career. In high school, I experimented with using some libraries like PyTorch and Keras for various problems. I also studied some of the math in high school and started to get a sense of how neural networks work. </li></ul></li></ul><p id="39a9ce1e-63a2-4656-96fd-4dc1c8c542de" class="">Also, I used <a href="http://alexlenail.me/NN-SVG/index.html">this</a> tool to draw the neural network diagrams showed in this document. </p></div></article></body></html>

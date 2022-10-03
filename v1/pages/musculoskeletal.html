@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/research.css" />
+    <link rel="icon" type="image/png" href="../images/radiograph.png" />
+    <title>Research - Musculoskeletal</title>
+  </head>
+  <body>
+    <a href="../index.html">Back to home</a>
+    <div class="research_title">
+      <h1>
+        Convolutional Neural Networks for Computer-Aided Detection of
+        Musculoskeletal Abnormalities
+      </h1>
+      <!-- <h3>Author: Rohan Sikand</h3> -->
+    </div>
+    <div class="page_content">
+      <hr />
+      <img src="../images/musculoskeletal_diagram.png" class="image_figure" />
+      <h2>Abstract</h2>
+      <p>
+        With over 2.6 billion musculoskeletal related injuries occurring each
+        year, the need for trained doctors is extensive–especially in rural
+        areas where doctors aren’t always available. This experiment aims to
+        test the ability of machine learning algorithms, specifically
+        convolutional neural networks, to accurately detect abnormalities in
+        musculoskeletal radiographs. The Stanford MURA dataset, consisting of
+        14,863 musculoskeletal radiographs, was used as input data. This
+        experiment aims not only to evaluate the use of machine learning to
+        detect abormalities, but also to decipher which CNN architectures
+        perform well for this task. Specifically, four different CNN
+        architectures were tested: VGG-16, VGG-19, ResNet, and Xception.
+        Predictions were made on a test set for each model on new radiographs.
+        To show the results and to best compare the architectures, training and
+        validation accuracy, training and validation loss, and a confusion
+        matrix are shown for each architecture. From each confusion matrix,
+        several metrics were calculated including sensitivity, specitivity,
+        precision, classification accuracy, F-score, and Matthews correlation
+        coefficient (MCC). The results are statistically significant and show
+        that CNNs are applicable for detecting abnormalities in musculoskeletal
+        radiographs.
+      </p>
+      <h2>Paper</h2>
+      <div id="pdf_viewer">
+        <script src="../js/pdfobject.js"></script>
+        <script>
+          PDFObject.embed("../files/musculoskeletal_paper.pdf", "#pdf_viewer");
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

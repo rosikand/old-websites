@@ -1,0 +1,26 @@
+body {
+  background-image: url(../images/page_background.png);
+  background-size: cover;
+}
+
+#home_page_table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  background-color: rgba(255, 255, 255, 0.80);
+}
+
+#headers {
+  text-align: center;
+}
+
+
+a {
+    text-decoration: none;
+    color: #0074D9;
+  }
+
+  a:hover {
+      text-decoration: underline;
+    color: #0074D9;
+  }

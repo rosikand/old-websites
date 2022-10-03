@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RS - Musculoskeletal</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="cards.css" />
+    <link rel="icon" type="image/png" href="images/stannyfavicon.png">
+    <style>
+      .research-content {
+        width: 55%;
+        margin: auto;
+        text-align: center;
+      }
+
+      .image_figure {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+      }
+      
+      .abstract-text {
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: small;
+        width: 80%;
+        text-align: center;
+        margin: auto;
+      }
+
+      #pdf_viewer {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 45rem;
+        border: 1rem solid rgba(0, 0, 0, 0.1);
+      }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <table class="header-table">
+      <!-- Make table three columns wide -->
+      <colgroup>
+        <col width="10%" />
+        <col width="25%" />
+        <col width="20%" />
+        <col width="15%" />
+        <col width="20%" />
+        <col width="10%" />
+      </colgroup>
+      <tr>
+          <td>
+            <img class="pic" src="images/prof.jpg" alt="Profile Pic">
+          </td>
+          <td>
+            <h2>
+              <a href="index.html">Rohan Sikand</a>
+            </h2>
+          </td>
+          <td>
+
+          </td>
+          <td>
+            <div class="centered">
+                <h3><a href="research.html">Research</a></h3>
+            </div>
+          </td>
+          <td>
+            <div class="centered">
+                <h3><a href="projects.html">Projects</a></h3>
+            </div>
+          </td>
+          <td>
+            <div class="centered">
+                <h3><a href="links.html"
+                  >Links</a
+                ></h3>
+            </div>
+          </td>
+      </tr>
+    </table>
+    <hr>
+
+    <!-- Content -->
+    <div class="every-card">
+    <br>
+
+    <div class= "research-content">
+
+    <!-- Title -->
+    <h4 class="h2-card">Convolutional Neural Networks for Computer-Aided Detection of
+      Musculoskeletal Abnormalities</h4>
+
+    <hr>
+    
+    <!-- Poster -->
+    <img src="images/musculoskeletal_diagram.png" class="image_figure" />
+
+    <!-- Abstract -->
+    <h5>Abstract</h5>
+    <p class="abstract-text">
+      With over 2.6 billion musculoskeletal related injuries occurring each
+        year, the need for trained doctors is extensive–especially in rural
+        areas where doctors aren’t always available. This experiment aims to
+        test the ability of machine learning algorithms, specifically
+        convolutional neural networks, to accurately detect abnormalities in
+        musculoskeletal radiographs. The Stanford MURA dataset, consisting of
+        14,863 musculoskeletal radiographs, was used as input data. This
+        experiment aims not only to evaluate the use of machine learning to
+        detect abormalities, but also to decipher which CNN architectures
+        perform well for this task. Specifically, four different CNN
+        architectures were tested: VGG-16, VGG-19, ResNet, and Xception.
+        Predictions were made on a test set for each model on new radiographs.
+        To show the results and to best compare the architectures, training and
+        validation accuracy, training and validation loss, and a confusion
+        matrix are shown for each architecture. From each confusion matrix,
+        several metrics were calculated including sensitivity, specitivity,
+        precision, classification accuracy, F-score, and Matthews correlation
+        coefficient (MCC). The results are statistically significant and show
+        that CNNs are applicable for detecting abnormalities in musculoskeletal
+        radiographs.
+    </p>
+
+    <!-- Paper (JS PDF Viewer) -->
+    <h5>Paper</h5>
+    <div id="pdf_viewer">
+      <script src="js/pdfobject.js"></script>
+      <script>
+        PDFObject.embed("files/musculoskeletal_paper.pdf", "#pdf_viewer");
+      </script>
+    </div>
+  
+  </div>
+  </div>
+  
+    
+</body>
+</html>
